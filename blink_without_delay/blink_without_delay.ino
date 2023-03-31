@@ -1,23 +1,23 @@
-const int DEFAULT_PIN = LED_BUILTIN;
-const int NUMBER_OF_PINS = 5;
+const int NUMBER_OF_PINS = 6;
 
 unsigned long* microsArr = new unsigned long[NUMBER_OF_PINS];
 unsigned long* intervalsArr = new unsigned long[NUMBER_OF_PINS];
 int* ledStates = new int[NUMBER_OF_PINS];
-int pins[NUMBER_OF_PINS] = {3, 5, 6, 9, 10};
+int pins[NUMBER_OF_PINS] = {3, 5, 6, 9, 10, 11};
 
 void setup() {
   for (int i = 0; i < NUMBER_OF_PINS; ++i) {
-    microsArr[i] = 0;
+    microArr[i] = 0;
     ledStates[i] = LOW;
     pinMode(pins[i], OUTPUT);
   }
 
-  intervalsArr[0] = 1e4 * 5;
-  intervalsArr[1] = 1e4 * 10;
-  intervalsArr[2] = 1e4 * 15;
-  intervalsArr[3] = 1e4 * 20;
-  intervalsArr[4] = 1e4 * 25;
+  intervalsArr[0] = 160000;
+  intervalsArr[1] = 50000;
+  intervalsArr[2] = 800000;
+  intervalsArr[3] = 400000;
+  intervalsArr[4] = 200000;
+  intervalsArr[5] = 100000;
 }
 
 void loop() {
