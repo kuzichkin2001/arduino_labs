@@ -1,14 +1,13 @@
-#include <TaskManagerIO.h>
+const int NUMBER_OF_PINS = 6;
 
-#define NUMBER_OF_PINS 6
-
+unsigned long* microsArr = new unsigned long[NUMBER_OF_PINS];
+unsigned long* intervalsArr = new unsigned long[NUMBER_OF_PINS];
 int* ledStates = new int[NUMBER_OF_PINS];
-  int pins[NUMBER_OF_PINS] = {3, 5, 6, 9, 10, 11};
-  unsigned long* intervalsArr = new unsigned long[NUMBER_OF_PINS];
+int pins[NUMBER_OF_PINS] = {3, 5, 6, 9, 10, 11};
 
 void setup() {
   for (int i = 0; i < NUMBER_OF_PINS; ++i) {
-    microArr[i] = 0;
+    microsArr[i] = 0;
     ledStates[i] = LOW;
     pinMode(pins[i], OUTPUT);
   }
@@ -19,8 +18,14 @@ void setup() {
   intervalsArr[3] = 400000;
   intervalsArr[4] = 200000;
   intervalsArr[5] = 100000;
+}
 
-  taskid_t taskId = taskManager.scheduleFixedRate(intervalsArr[0], [] {
+void loop() {
+  unsigned long micros_val = micros();
+
+  if (micros_val - microsArr[0] >= intervalsArr[0]) {
+    microsArr[0] = micros_val;
+
     if (ledStates[0] == LOW) {
       ledStates[0] = HIGH;
     }
@@ -29,9 +34,11 @@ void setup() {
     }
 
     digitalWrite(pins[0], ledStates[0]);
-  });
+  }
 
-  taskid_t taskId = taskManager.scheduleFixedRate(intervalsArr[1], [] {
+  if (micros_val - microsArr[1] >= intervalsArr[1]) {
+    microsArr[1] = micros_val;
+
     if (ledStates[1] == LOW) {
       ledStates[1] = HIGH;
     }
@@ -40,9 +47,11 @@ void setup() {
     }
 
     digitalWrite(pins[1], ledStates[1]);
-  });
+  }
+  
+  if (micros_val - microsArr[2] >= intervalsArr[2]) {
+    microsArr[2] = micros_val;
 
-  taskid_t taskId = taskManager.scheduleFixedRate(intervalsArr[2], [] {
     if (ledStates[2] == LOW) {
       ledStates[2] = HIGH;
     }
@@ -51,9 +60,11 @@ void setup() {
     }
 
     digitalWrite(pins[2], ledStates[2]);
-  });
+  }
 
-  taskid_t taskId = taskManager.scheduleFixedRate(intervalsArr[3], [] {
+  if (micros_val - microsArr[3] >= intervalsArr[3]) {
+    microsArr[3] = micros_val;
+
     if (ledStates[3] == LOW) {
       ledStates[3] = HIGH;
     }
@@ -62,9 +73,11 @@ void setup() {
     }
 
     digitalWrite(pins[3], ledStates[3]);
-  });
+  }
 
-  taskid_t taskId = taskManager.scheduleFixedRate(intervalsArr[4], [] {
+  if (micros_val - microsArr[4] >= intervalsArr[4]) {
+    microsArr[4] = micros_val;
+
     if (ledStates[4] == LOW) {
       ledStates[4] = HIGH;
     }
@@ -73,9 +86,11 @@ void setup() {
     }
 
     digitalWrite(pins[4], ledStates[4]);
-  });
+  }
 
-  taskid_t taskId = taskManager.scheduleFixedRate(intervalsArr[5], [] {
+  if (micros_val - microsArr[5] >= intervalsArr[5]) {
+    microsArr[5] = micros_val;
+
     if (ledStates[5] == LOW) {
       ledStates[5] = HIGH;
     }
@@ -84,9 +99,5 @@ void setup() {
     }
 
     digitalWrite(pins[5], ledStates[5]);
-  });
-}
-
-void loop() {
-  taskManager.runLoop();
+  }
 }

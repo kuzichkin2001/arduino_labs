@@ -87,4 +87,17 @@ void loop() {
 
     digitalWrite(pins[4], ledStates[4]);
   }
+
+  if (micros_val - microsArr[5] >= intervalsArr[5]) {
+    microsArr[5] = micros_val;
+
+    if (ledStates[5] == LOW) {
+      ledStates[5] = HIGH;
+    }
+    else {
+      ledStates[5] = LOW;
+    }
+
+    digitalWrite(pins[5], ledStates[5]);
+  }
 }
