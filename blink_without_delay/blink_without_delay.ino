@@ -7,7 +7,7 @@ int pins[NUMBER_OF_PINS] = {3, 5, 6, 9, 10, 11};
 
 void setup() {
   for (int i = 0; i < NUMBER_OF_PINS; ++i) {
-    microArr[i] = 0;
+    microsArr[i] = 0;
     ledStates[i] = LOW;
     pinMode(pins[i], OUTPUT);
   }
