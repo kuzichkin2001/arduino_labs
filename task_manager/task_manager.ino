@@ -28,7 +28,7 @@ void setup() {
     }
 
     digitalWrite(pins[0], ledStates[0]);
-  });
+  }, TIME_MICROS);
 
   taskid_t taskId1 = taskManager.scheduleFixedRate(intervalsArr[1], [] {
     if (ledStates[1] == LOW) {
@@ -39,7 +39,7 @@ void setup() {
     }
 
     digitalWrite(pins[1], ledStates[1]);
-  });
+  }, TIME_MICROS);
 
   taskid_t taskId2 = taskManager.scheduleFixedRate(intervalsArr[2], [] {
     if (ledStates[2] == LOW) {
@@ -50,7 +50,7 @@ void setup() {
     }
 
     digitalWrite(pins[2], ledStates[2]);
-  });
+  }, TIME_MICROS);
 
   taskid_t taskId3 = taskManager.scheduleFixedRate(intervalsArr[3], [] {
     if (ledStates[3] == LOW) {
@@ -61,7 +61,7 @@ void setup() {
     }
 
     digitalWrite(pins[3], ledStates[3]);
-  });
+  }, TIME_MICROS);
 
   taskid_t taskId4 = taskManager.scheduleFixedRate(intervalsArr[4], [] {
     if (ledStates[4] == LOW) {
@@ -72,7 +72,7 @@ void setup() {
     }
 
     digitalWrite(pins[4], ledStates[4]);
-  });
+  }, TIME_MICROS);
 
   taskid_t taskId5 = taskManager.scheduleFixedRate(intervalsArr[5], [] {
     if (ledStates[5] == LOW) {
@@ -83,7 +83,7 @@ void setup() {
     }
 
     digitalWrite(pins[5], ledStates[5]);
-  });
+  }, TIME_MICROS);
 }
 
 void loop() {
